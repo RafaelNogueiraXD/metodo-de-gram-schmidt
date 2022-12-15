@@ -88,12 +88,29 @@ float encontraWn(float **vetores,int tamanho,int n){
     vetores=malloc(sizeof(float)*n);
     for(int i=0;i<n;i++)vetores[i]=vetorCria(tamanho);
 
-    float **vetoresRefined=malloc(sizeof(float)*n);
-    for(int i=0;i<n;i++)vetoresRefined[i]=vetorCria(tamanho);
+    float *diferença=vetorCria(tamanho);
 
-    for(int i=0;i<tamanho;i)vetoresRefined[1][i]=vetores[1][i];
-    
-    
+    float **vetoresOrtogonais=malloc(sizeof(float)*n);
+    for(int i=0;i<n;i++)vetoresOrtogonais[i]=vetorCria(tamanho);
+
+    for(int i=0;i<tamanho;i)vetoresOrtogonais[1][i]=vetores[1][i];
+
+    //W2 = vetoresOrtogonais[2][i] - encontraCoeficiente(vetores[2],vetores[1],tamanho)*vetoresOrtogonais[1][i]
+    //W2 = vetoresOrtogonais[2] = vetores[2][i] - encontraVetorW(vetores[2],vetoresOrtogonais[1],tamanho)
+
+    //W3 = vetoresOrtogonais[3][i] - (encontraCoeficiente(vetores[3],vetoresOrtogonais[1],tamanho)*vetoresOrtogonais[1][i]  + encontraCoeficiente(vetores[3],vetoresOrtogonais[2],tamanho)*vetoresOrtogonais[2][i])
+    //W3 = vetoresOrtogonais[3] = vetores[3][i] - [encontraVetorW(vetores[3],vetoresOrtogonais[1],tamanho) + encontraVetorW(vetores[3],vetoresOrtogonais[2],tamanho);
+    //W3 = vetoresOrtogonais[3] = vetores[3][i] - diferença[i]
+    //diferença[i]+= EncontraVetorW(Vetores[i],vetoresOrtogonais[j],tamanho)
+
+    //Wn = vetores[n][i] - encontraCoeficientes(vetores[n],vetores[n-1],tamanho)*vetores[n]
+
+    for(int i=0;i<n;i++){
+        for(int j=0;j<i-1;j++){
+
+
+        }
+    }
 }
 
 
