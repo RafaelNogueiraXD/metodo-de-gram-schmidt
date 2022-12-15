@@ -64,23 +64,25 @@ float multiplicaVetores(float *vet1,float *vet2, int tamanho){
     return resultado;
 }
 
-float *encontraVetor_W_Individual(float *vet1,float *vet2,int tamanho){
-
-    float *vetorW=vetorCria(tamanho);
-    float coeficiente=encontraCoeficiente(vet1,vet2,tamanho);
-
-
-    for(int i=0;i<tamanho;i++)vetorW[i]=vet1[i]-(vet2[i]*coeficiente);
-
-}
+        // Funcao dando erro!
+  
 
 float encontraCoeficiente(float *vet1, float *vet2, int tamanho){
 
-    float coeficienteA=0;
+    float coeficienteA=0.0;
     coeficienteA=multiplicaVetores(vet1,vet2,tamanho)/multiplicaVetores(vet2,vet2,tamanho);
     return coeficienteA;
 }
+      
+float *encontraVetor_W_Individual(float *vet1,float *vet2,int tamanho){
 
+    float *vetorW=vetorCria(tamanho);
+    float coeficiente=0.0;
+   
+    coeficiente=encontraCoeficiente(vet1,vet2,tamanho);
+    for(int i=0;i<tamanho;i++)vetorW[i]=vet1[i]-(vet2[i]*coeficiente);
+    return vetorW;
+}
 //Wn=Vn - Somatorio de W1a1 a Wnan-1
 
 float encontraWn(float **vetores,int tamanho,int n){
@@ -123,11 +125,11 @@ float vetorModulo(float*vet1, int tamanho){
 
 
 //funcoes matrizes
-float **matriz2dCria(int linha,int coluna){};
-float **matriz2dPreenche(float**matriz,int linha,int coluna){};
-void matriz2dMostra(float**matriz,int linha,int coluna){};
-float matriz2dSoma(float**matriz1,float**matriz2 ,int linha,int coluna){};
-float **matriz2dMultiplicacao(float**matriz1,float**matriz2 ,int linha,int coluna1, int coluna2){};
+    // float **matriz2dCria(int linha,int coluna){};
+    // float **matriz2dPreenche(float**matriz,int linha,int coluna){};
+    // void matriz2dMostra(float**matriz,int linha,int coluna){};
+    // float matriz2dSoma(float**matriz1,float**matriz2 ,int linha,int coluna){};
+    // float **matriz2dMultiplicacao(float**matriz1,float**matriz2 ,int linha,int coluna1, int coluna2){};
 //metodos
-float **MetodoCramer(){};
-float **BaseOrtogonal(){};
+    // float **MetodoCramer(){};
+    // float **BaseOrtogonal(){};
