@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include "function.c"
-
+//  FAVOR LER 
+// A FUNÇÃO "vetorGera" aloca,preenche e mostra o vetor, utilizem ele.
 int main(){
  
     int tamanho = 0;

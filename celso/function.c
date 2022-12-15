@@ -1,4 +1,4 @@
-//funcoes vetores
+//funcoes vetores 
 float *vetorCria(int tamanho){
     float*vetor = (float*) malloc(sizeof(float)*tamanho);
     return vetor;
