@@ -64,9 +64,6 @@ float multiplicaVetores(float *vet1,float *vet2, int tamanho){
     return resultado;
 }
 
-        // Funcao dando erro!
-  
-
 float encontraCoeficiente(float *vet1, float *vet2, int tamanho){
 
     float coeficienteA=0.0;
@@ -131,5 +128,11 @@ float vetorModulo(float*vet1, int tamanho){
     // float matriz2dSoma(float**matriz1,float**matriz2 ,int linha,int coluna){};
     // float **matriz2dMultiplicacao(float**matriz1,float**matriz2 ,int linha,int coluna1, int coluna2){};
 //metodos
-    // float **MetodoCramer(){};
+    // float Li(){}
+    float *MetodoCramer(int *vet1,int *vet2, int tamanho){
+        float *vetorA = vetorCria(tamanho);
+        float eq1 = 0, eq2 = 0;
+        // eq1 = vet1[0] + vet2[0] . . .
+        // eq2 = vet1[1] + vet2[1]
+    };
     // float **BaseOrtogonal(){};
