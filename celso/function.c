@@ -31,15 +31,15 @@ float *vetorPreenche(float*vet,int tamanho){
     
     return vet;
 };
-void vetorMostra(float*  vet,int tamanho){
-    printf("\n \nVetor : {");
+void vetorMostra(char nome[20], float*  vet,int tamanho){
+    printf("\n \nVetor %s: {", nome);
     for (int i = 0; i < tamanho; i++)printf(" %.2f ,",vet[i]);
     printf(" }");
 };
 float *vetorGera(int tamanho){
     float *vetor = vetorCria(tamanho);
     vetor = vetorPreenche(vetor,tamanho);
-    vetorMostra(vetor,tamanho);
+    vetorMostra("gerado ",vetor,tamanho);
     return vetor;
 };
 float vetorSoma(float*vet1,float*vet2, int tamanho){
@@ -128,11 +128,25 @@ float vetorModulo(float*vet1, int tamanho){
     // float matriz2dSoma(float**matriz1,float**matriz2 ,int linha,int coluna){};
     // float **matriz2dMultiplicacao(float**matriz1,float**matriz2 ,int linha,int coluna1, int coluna2){};
 //metodos
-    // float Li(){}
-    float *MetodoCramer(int *vet1,int *vet2, int tamanho){
+    float verificaLi(float *vet1,float *vet2, int tamanho){
+        printf("\n\n\n\t !Verificando Lineariadade: ");
+        float vet[2] = {0.0,0.0};
+        MetodoCramer(vet1,vet2,vet, tamanho);
+    }
+    void MetodoCramer(float *vet1,float *vet2,float * vetResultado, int tamanho){
         float *vetorA = vetorCria(tamanho);
-        float eq1 = 0, eq2 = 0;
-        // eq1 = vet1[0] + vet2[0] . . .
-        // eq2 = vet1[1] + vet2[1]
+        float x = 0, y = 0, d = 0.0, eq1 = 0 , eq2=0;
+       
+        d = vet1[0] * vet2[1] - vet1[1] * vet2[0] ;
+        x =( vet2[1] * vetResultado[0] - vet2[0] * vetResultado[1] ) / d;
+        y =( vet1[0] * vetResultado[1] - vet1[1] * vetResultado[0])  / d; 
+       
+        eq1 = vet1[0] * x + vet2[0]* y;
+        eq2 = vet1[1] * x + vet2[1]* y;
+
+        eq1 == vetResultado[0] ? printf("\n Primeira equacao ok! \n") : printf(" \n primeira falhou \n");
+        eq2 == vetResultado[1] ? printf("\n Segunda equacao ok! \n") : printf("\n segunda falhou \n");
+        // x = vet1[0] + vet2[0] . . .
+        // y = vet1[1] + vet2[1]
     };
     // float **BaseOrtogonal(){};

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 #include "function.c"
 //  FAVOR LER 
 // A FUNÇÃO "vetorGera" aloca,preenche e mostra o vetor, utilizem ele.
@@ -19,12 +20,11 @@ int main(){
     printf("\n modulo do vetor 2: %.2f ",vetorModulo(vetor2,tamanho));
 
 
-    printf("\n diferenca entre eles: ");
-    vetorMostra(diferencaVetores(vetor,vetor2,tamanho), tamanho);
+    printf("\n diferenca entre eles:");
+    vetorMostra(" De diferenca ",diferencaVetores(vetor,vetor2,tamanho), tamanho);
     printf("\n multiplicacao: %.2f ",multiplicaVetores(vetor,vetor2,tamanho));
-    vetorMostra(encontraVetor_W_Individual(vetor,vetor2,tamanho),tamanho);
-    
-    
+    vetorMostra("que encontra W ",encontraVetor_W_Individual(vetor,vetor2,tamanho),tamanho);
+    verificaLi(vetor,vetor2,tamanho);
     // vetorMostra(encontraVetor_W_Individual(vetor,vetor2,tamanho),tamanho);
     // printf("\n encontra W: %.2f ",encontraVetor_W_Individual(vetor,vetor2,tamanho));
 }
