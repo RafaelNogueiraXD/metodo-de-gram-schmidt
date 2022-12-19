@@ -34,7 +34,7 @@ int main(){
     float **matriz = matrizGera(qtd,tamanho);
     // escalonamento(matriz,qtd,tamanho,vetorResultado);
     
-    verificaLi(matriz, qtd, tamanho) == 1 ? printf("\n sistema eh linear\n"): printf("\n sistema nao eh linear!\n") ;
+    verificaLi(matriz, qtd, tamanho) == 1 ? printf("\n sistema LI \n"): printf("\n sistema nao eh LI !\n") ;
     // MetodoCramerVetores(matriz[0],matriz[1],vetorResultado,tamanho);
     // vetorMostra(encontraVetor_W_Individual(vetor,vetor2,tamanho),tamanho);
     // printf("\n encontra W: %.2f ",encontraVetor_W_Individual(vetor,vetor2,tamanho));

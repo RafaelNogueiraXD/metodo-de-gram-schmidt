@@ -152,13 +152,13 @@ int verificaLi(float **matriz, int linha,int coluna){
         if(i + 1 != linha){
            verifica =  MetodoCramerVetores(matriz[i],matriz[i + 1],vet, coluna);
             if(verifica == 0){
-                printf("\n Nao eh linear!! \n");
+                printf("\n Nao eh LI!! \n");
                 return 0;
             }
         }else
            verifica = MetodoCramerVetores(matriz[i],matriz[0],vet, coluna);
         if(verifica == 0){
-            printf("\n Nao eh linear!! \n");
+            printf("\n Nao eh LI!! \n");
             return 0;
         }
     }
