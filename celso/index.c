@@ -4,15 +4,18 @@
 #include <string.h>
 #include "function.c"
 #include "crammer.c"
+#include "escalonamento.c"
 //  FAVOR LER 
 // A FUNÇÃO "vetorGera" aloca,preenche e mostra o vetor, utilizem ele.
 int main(){
  
-    int tamanho = 0;
-    printf("digite o tamanho do vetor");
+    int tamanho = 0,qtd = 0;
+    printf("digite o numero de dimensoes dos vetores");
     scanf("%d",&tamanho);
+    
+    printf("digite o numero de vetores: ");
+    scanf("%d",&qtd);
     getchar();
-
     //teste de Funções
     /*
     float * vetor2 = vetorGera(tamanho);
@@ -28,10 +31,11 @@ int main(){
     verificaLi(vetor,vetor2,tamanho);
     */
 
-    //Teste do Metodo de Crammer
-    float * vetorResultado = vetorGera(tamanho);
-    float **matriz = matrizGera(tamanho);
-    metodoCrammer(matriz, tamanho,vetorResultado);
+    float **matriz = matrizGera(qtd,tamanho);
+    // escalonamento(matriz,qtd,tamanho,vetorResultado);
+    
+    verificaLi(matriz, qtd, tamanho) == 1 ? printf("\n sistema eh linear\n"): printf("\n sistema nao eh linear!\n") ;
+    // MetodoCramerVetores(matriz[0],matriz[1],vetorResultado,tamanho);
     // vetorMostra(encontraVetor_W_Individual(vetor,vetor2,tamanho),tamanho);
     // printf("\n encontra W: %.2f ",encontraVetor_W_Individual(vetor,vetor2,tamanho));
 }

@@ -12,7 +12,7 @@ float *vetorPreenche(float*vet,int tamanho){
         getchar();
         switch (op){
         case 'a':
-            for (int i = 0; i < tamanho; i++)vet[i] = rand() % 100;
+            for (int i = 0; i < tamanho; i++)vet[i] = rand() % 10;
             j++;
         break;
         case 'm':
@@ -121,19 +121,20 @@ float vetorModulo(float*vet1, int tamanho){
 
 
 //funcoes matrizes
-void matrizMostra(float **matriz,int tamanho){
-    for (int i = 0; i < tamanho; i++)
+void matrizMostra(float **matriz,int linha,int coluna){
+    printf("\n\n Matriz = ");
+    for (int i = 0; i < linha; i++)
     {
         printf("\n  vetor %d :  ", i);
-        for(int j = 0; j < tamanho; j++)
+        for(int j = 0; j < coluna; j++)
             printf("%.2f  ", matriz[i][j]);
     }
     
 }
-float **matrizGera(int tamanho){
-    float **matriz = (int**) malloc(sizeof(int)*tamanho);
-    for(int i=0; i<tamanho; i++) matriz[i] =  vetorGera(tamanho);
-    matrizMostra(matriz,tamanho);
+float **matrizGera(int linha,int coluna){
+    float **matriz = (int**) malloc(sizeof(int)*linha);
+    for(int i=0; i<linha; i++) matriz[i] =  vetorGera(coluna);
+    matrizMostra(matriz,linha,coluna);
     return matriz;
 }
     // float **matriz2dCria(int linha,int coluna){};
@@ -142,15 +143,31 @@ float **matrizGera(int tamanho){
     // float matriz2dSoma(float**matriz1,float**matriz2 ,int linha,int coluna){};
     // float **matriz2dMultiplicacao(float**matriz1,float**matriz2 ,int linha,int coluna1, int coluna2){};
 //metodos
-float verificaLi(float *vet1,float *vet2, int tamanho){
+int verificaLi(float **matriz, int linha,int coluna){
     printf("\n\n\n\t !Verificando Lineariadade: ");
-    float vet[2] = {0.0,0.0};
-    MetodoCramerVetores(vet1,vet2,vet, tamanho);
+    float vet[2] = {0.0,0.0},verifica =0;
+    for (int i = 0; i < linha; i++)
+    {   
+        verifica = 0;
+        if(i + 1 != linha){
+           verifica =  MetodoCramerVetores(matriz[i],matriz[i + 1],vet, coluna);
+            if(verifica == 0){
+                printf("\n Nao eh linear!! \n");
+                return 0;
+            }
+        }else
+           verifica = MetodoCramerVetores(matriz[i],matriz[0],vet, coluna);
+        if(verifica == 0){
+            printf("\n Nao eh linear!! \n");
+            return 0;
+        }
+    }
+    return 1 ;
 }
 //Version 0.0 - com apenas a1 e a2
-void MetodoCramerVetores(float *vet1,float *vet2,float * vetResultado, int tamanho){
+int MetodoCramerVetores(float *vet1,float *vet2,float * vetResultado, int tamanho){
     float *vetorA = vetorCria(tamanho);
-    float x = 0, y = 0, d = 0.0, eq1 = 0 , eq2=0;
+    float x = 0, y = 0, d = 0.0, eq1 = 0 , eq2=0, ver =0;
     
     d = vet1[0] * vet2[1] - vet1[1] * vet2[0] ;
     x =( vet2[1] * vetResultado[0] - vet2[0] * vetResultado[1] ) / d;
@@ -159,9 +176,12 @@ void MetodoCramerVetores(float *vet1,float *vet2,float * vetResultado, int taman
     eq1 = vet1[0] * x + vet2[0]* y;
     eq2 = vet1[1] * x + vet2[1]* y;
 
-    eq1 == vetResultado[0] ? printf("\n Primeira equacao ok! \n") : printf(" \n primeira falhou \n");
-    eq2 == vetResultado[1] ? printf("\n Segunda equacao ok! \n") : printf("\n segunda falhou \n");
+    ver = eq1 == vetResultado[0] ? 1 : 0 ;
+    if(ver == 0) return 0;
+    ver = eq2 == vetResultado[1] ? 1 : 0;
+    if(ver == 0) return 0;
     // x = vet1[0] + vet2[0] . . .
     // y = vet1[1] + vet2[1]
+    return ver;
 };
 // float **BaseOrtogonal(){};
